@@ -64,21 +64,25 @@ export default function CourseCard({ course }) {
     <Box>
       <Card
         sx={{
-          maxWidth: 295,
+          maxWidth: { xs: 130, md: 295 },
           boxShadow: "0px 4px 4px 0px #00000040",
         }}
       >
         <CardActionArea>
           <CardMedia
             component="img"
-            height="150"
             src={course.image}
             alt="course image"
+            sx={{
+              // height: { xs: "100px", md: "150px" },
+              width: { xs: "100%" },
+            }}
           />
           <CardContent
             sx={{
               display: "flex",
               justifyContent: "space-between",
+              padding: { xs: "10px", md: "1rem" },
             }}
           >
             <Box>
@@ -87,23 +91,37 @@ export default function CourseCard({ course }) {
                 variant="h5"
                 component="div"
                 sx={{
-                  fontSize: "20px",
+                  fontSize: { xs: "11px", md: "20px" },
                   fontWeight: 700,
+                  margin: 0,
                   color: "#004E69",
                 }}
               >
                 {course.title}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ fontSize: { xs: "10px", md: "16px" } }}
+              >
                 CubeAISolution Tech
               </Typography>
             </Box>
             <Box>
-              {course.progress ? (
-                <CircularProgressWithLabel value={course.progress} />
-              ) : (
-                ""
-              )}
+              <Box
+                sx={{
+                  width: { xs: "90px", sm: "150px" },
+                  display: { xs: "flex" },
+                  justifyContent: { md: "center" },
+                  alignItems: "center",
+                }}
+              >
+                {course.progress ? (
+                  <CircularProgressWithLabel value={course.progress} />
+                ) : (
+                  ""
+                )}
+              </Box>
             </Box>
           </CardContent>
         </CardActionArea>
@@ -116,11 +134,12 @@ export default function CourseCard({ course }) {
         >
           <Button
             size="small"
-            color="primary"
+            variant="contained"
             sx={{
-              backgroundColor: "blue",
+              backgroundColor: "#004E69",
               color: "#ffff",
-              padding: "5px 20px",
+              fontSize: { xs: "0.7rem", md: "1rem" },
+              padding: { xs: "2px 10px", md: "5px 20px" },
             }}
           >
             {course.progress ? "Resume" : "Enroll"}

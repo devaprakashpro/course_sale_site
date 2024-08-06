@@ -1,48 +1,24 @@
 import React, { useState } from "react";
-// import * as React from "react";
-// import React, { useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-// import CssBaseline from "@mui/material/CssBaseline";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import CssBaseline from "@mui/material/CssBaseline";
-
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-import ResponsiveAppBar from "./Header";
 import HomeIcon from "@mui/icons-material/Home";
-import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
-import ImageIcon from "@mui/icons-material/Image";
-import WorkIcon from "@mui/icons-material/Work";
-import BeachAccessIcon from "@mui/icons-material/BeachAccess";
 import SpeedIcon from "@mui/icons-material/Speed";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import TerminalIcon from "@mui/icons-material/Terminal";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
-import DraftsIcon from "@mui/icons-material/Drafts";
-import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-// import Card from "@mui/material/Card";
-// import CardContent from "@mui/material/CardContent";
-// import CardMedia from "@mui/material/CardMedia";
-// // import Typography from "@mui/material/Typography";
-// import { Button, CardActionArea, CardActions } from "@mui/material";
+
 
 const drawerWidth = 200;
 const openedMixin = (theme) => ({
@@ -128,9 +104,6 @@ const Drawer = styled(MuiDrawer, {
 export default function MiniDrawer() {
   const navigate = useNavigate();
 
-  // const handleClick = () => {
-  //   navigate("/course");
-  // };
   const theme = useTheme();
   const [selectedIndex, setSelectedIndex] = React.useState(1);
   const [open, setOpen] = React.useState(false);

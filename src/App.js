@@ -10,6 +10,8 @@ import Dashbar from "./components/dashbar";
 import Home from "./components/Home";
 import Placement from "./components/Placement";
 import Compiler from "./components/Compiler";
+import AgoraRTC from "agora-rtc-sdk-ng";
+import { AgoraRTCProvider } from "agora-rtc-react";
 
 // Create a theme with custom zIndex values
 const theme = createTheme({
@@ -56,11 +58,11 @@ function App() {
           {/* Drawer */}
           <Grid
             item
-            xs={4}
-            sm={4}
-            md={4}
+            xs={0}
+            // sm={4}
+            md={0}
             sx={{
-              position: "relative",
+              position: "fixed",
               zIndex: (theme) => theme.zIndex.appBar, // Drawer should be below AppBar
               backgroundColor: "lightgrey",
             }}
@@ -69,7 +71,7 @@ function App() {
           </Grid>
 
           {/* Main Content */}
-          <Grid item xs={8} sm={8} md={12}>
+          <Grid item xs={12} sm={12} md={12}>
             <Routes>
               <Route path="/course" element={<Course />} />
               <Route path="/dashbar" element={<Dashbar />} />

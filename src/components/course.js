@@ -27,28 +27,34 @@ const Search = styled("div")(({ theme }) => ({
   "&:hover": {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
-  marginRight: theme.spacing(2),
+  marginRight: theme.spacing(0),
   marginLeft: 0,
   width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
-    width: "auto",
-  },
+  // [theme.breakpoints.up("sm")]: {
+  //   marginLeft: theme.spacing(2),
+  //   width: "auto",
+  // },
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
+    paddingLeft: `calc(0.4em + ${theme.spacing(4)})`,
+    padding: theme.spacing(1, 1, 1, 1),
     [theme.breakpoints.up("md")]: {
       width: "20ch",
+      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+      padding: theme.spacing(1, 1, 1, 1),
     },
     "&::placeholder": {
       color: "#004E69", // Change this to your desired color
       opacity: 1, // To make the color fully opaque
+      fontSize: "14px",
+      "@media (min-width: 768px)": {
+        fontSize: "16px",
+      },
     },
   },
 }));
@@ -86,14 +92,6 @@ const allCourses = [
       "https://www.btreesystems.com/wp-content/uploads/2023/11/PHP_Training.png",
     progress: 30,
     date: "2024-04-15",
-  },
-
-  {
-    title: "HTML",
-    provider: "CubeAISolution Tech",
-    image: "https://www.a2itsoft.com/uploads/1562399438.png",
-    progress: 43,
-    date: "2024-08-15",
   },
   {
     title: "Python Programming",
@@ -165,9 +163,10 @@ export default function MultiActionAreaCard() {
           minHeight: "auto",
           position: "relative",
           marginTop: "6rem",
-          marginLeft: "6rem",
-          marginRight: "3rem",
+          marginLeft: { xs: "4rem", md: "6rem" },
+          marginRight: { xs: "0.1rem", md: "3rem" },
           width: "100%",
+          // backgroundColor: "yellow",
         }}
       >
         <Box
@@ -179,7 +178,7 @@ export default function MultiActionAreaCard() {
         >
           <Typography
             sx={{
-              fontSize: "1.6rem",
+              fontSize: { xs: "1.3rem", md: "1.6rem" },
               color: "#004E6980",
               fontWeight: 600,
             }}
@@ -189,9 +188,14 @@ export default function MultiActionAreaCard() {
           <Box
             sx={{
               display: "flex",
-              height: "3rem",
+              height: { xs: "3rem", md: "3rem" },
               overflow: "hidden",
+              ml: { xs: "0.5rem", md: "1rem" },
               alignItems: "center",
+              position: "relative",
+              top: { xs: "-4px", md: "5px" },
+              justifyContent: { xs: "space-between", md: "space-around" },
+              // backgroundColor: "yellow",
             }}
           >
             <Search
@@ -199,15 +203,21 @@ export default function MultiActionAreaCard() {
                 border: "2px solid rgba(0, 78, 105, 1)",
                 display: "flex",
                 alignItems: "center",
+                height: { xs: "1.6rem", md: "2.5rem" },
+                width: { xs: "9rem" },
+                // backgroundColor: "red",
               }}
             >
-              <SearchIconWrapper>
+              {/* <SearchIconWrapper sx={{ backgroundColor: "green" }}>
                 <SearchIcon
                   sx={{
                     color: "#004E69",
+                    display: { xs: "none", md: "block" },
+                    padding: 0,
+                    backgroundColor: "blue",
                   }}
                 />
-              </SearchIconWrapper>
+              </SearchIconWrapper> */}
               <StyledInputBase
                 placeholder={isSearchFocused ? "" : "Search.."}
                 value={searchItem}
@@ -216,17 +226,25 @@ export default function MultiActionAreaCard() {
                 onChange={handleSearchChange}
                 onFocus={handleSearchFocus}
                 onBlur={handleSearchoff}
+                sx={
+                  {
+                    // visibility: { xs: "hidden" },
+                    // backgroundColor: "grey",
+                  }
+                }
               />
             </Search>
+            {/* ------------------------- */}
             {suggestions.length > 0 && (
               <Paper
                 sx={{
                   position: "absolute",
-                  zIndex: 1,
-                  top: "6%",
-                  left: "69%",
+                  zIndex: 4,
+                  // backgroundColor: "black",
+                  top: { xs: "1rem", md: "6%" },
+                  left: { xs: "0%", md: "2%" },
                   right: 0,
-                  width: "240px",
+                  width: { xs: "150px", md: "240px" },
                 }}
               >
                 <List>
@@ -247,7 +265,11 @@ export default function MultiActionAreaCard() {
             <FormControl
               sx={{
                 m: 1,
-                minWidth: 120,
+                display: "flex",
+
+                minWidth: { xs: 90, md: 120 },
+                padding: { xs: "0px" },
+
                 "& .MuiOutlinedInput-root": {
                   "& fieldset": {
                     border: "2px solid #004E69",
@@ -264,13 +286,21 @@ export default function MultiActionAreaCard() {
                 },
                 "& .MuiInputBase-input": {
                   color: "#004E69",
+                  // backgroundColor: "green",
+                  padding: { xs: "2px", md: "10px" },
                 },
               }}
               size="small"
             >
               <InputLabel
                 id="demo-select-small-label"
-                sx={{ color: "#004E69" }}
+                sx={{
+                  color: "#004E69",
+                  padding: { xs: "0px" },
+                  height: { xs: "1.6rem", md: "2.5rem" },
+                  fontSize: { xs: "0.840rem", md: "1rem" },
+                  top: { xs: "-5px", md: "3px" },
+                }}
               >
                 Sort by
               </InputLabel>
@@ -284,6 +314,9 @@ export default function MultiActionAreaCard() {
                   "& .MuiSelect-root": {
                     border: "2px solid #004E69",
                     color: "#004E69",
+                    width: "100px",
+                    height: "100%",
+                    backgroundColor: "green",
                   },
                 }}
               >
@@ -306,26 +339,18 @@ export default function MultiActionAreaCard() {
                 variant="h4"
                 gutterBottom
                 sx={{
-                  fontSize: "1.8rem",
+                  mt: { xs: "1rem" },
+                  fontSize: { xs: "1.2rem", sm: "1.5rem" },
                   color: " #004E69",
                   fontWeight: 700,
                 }}
               >
                 My Courses
               </Typography>
-              {/* ---------------------- */}
-              {/* <Grid container spacing={3}>
-                {allCourses
-                  .filter((course) => course.progress !== undefined)
-                  .map((course, index) => (
-                    <Grid item xs={12} sm={6} md={4} key={index}>
-                      <CourseCard course={course} />
-                    </Grid>
-                  ))}
-              </Grid> */}
-              <Grid container spacing={3}>
+
+              <Grid container spacing={2}>
                 {sortedCourses.map((course, index) => (
-                  <Grid item xs={12} sm={6} md={4} key={index}>
+                  <Grid item xs={6} sm={3} md={4} key={index}>
                     <CourseCard course={course} />
                   </Grid>
                 ))}
@@ -337,17 +362,18 @@ export default function MultiActionAreaCard() {
             variant="h4"
             gutterBottom
             sx={{
-              mt: 4,
-              fontSize: "1.8rem",
+              mt: { xs: 5 },
+              mb: { xs: 4 },
+              fontSize: { xs: "1.2rem", sm: "1.5rem" },
               color: " #004E69",
               fontWeight: 700,
             }}
           >
             All Courses
           </Typography>
-          <Grid container spacing={3}>
+          <Grid container spacing={2}>
             {filteredCoursesall.map((course, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
+              <Grid item xs={6} sm={3} md={3} key={index}>
                 <CourseCard course={course} />
               </Grid>
             ))}
